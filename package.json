@@ -1,0 +1,26 @@
+{
+  "name": "@dashkite/verve",
+  "version": "0.0.0",
+  "description": "Universal CSS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dashkite/dashkite/verve.git"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/dashkite/dashkite/verve/issues"
+  },
+  "homepage": "https://github.com/dashkite/dashkite/verve#readme",
+  "imports": { },
+  "devDependencies": {
+    "@dashkite/amen": "^0.2.0",
+    "@dashkite/amen-console": "^0.0.2",
+    "@dashkite/genie": "^0.5.6",
+    "@dashkite/genie-presets": "link:../genie-presets"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "build": "genie build"
+  }
+}

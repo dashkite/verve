@@ -1,0 +1,39 @@
+presets:
+  verify: null
+  update: null
+  release: null
+  coffeescript:
+    targets:
+      browser:
+        - preset: browser
+          glob:
+            - 'src/**/*.coffee'
+      node:
+        - preset: node
+          glob:
+            - 'test/**/*.coffee'
+  pug:
+    targets:
+      browser:
+        - preset: render
+          glob: src/**/*.pug
+          document: false
+          root: ./build/browser/src
+
+  stylus:
+    targets:
+      browser:
+        - preset: js
+          glob:
+            - src/**/*.styl
+
+  yaml:
+    targets:
+      node:
+        - preset: js
+          glob:
+            - "{src,test}/**/*.yaml"
+
+  media: {}
+
+
