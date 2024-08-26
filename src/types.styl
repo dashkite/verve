@@ -1,8 +1,8 @@
-.header, .header > .app, .header > .page, .header > .page-2
+header, header > * > .container
   &:empty
     display none
 
-  & > .block
+  .block
 
     &.nav
       --block-child-align-items center
@@ -10,9 +10,10 @@
 
       &:first-child
         left()
-
-      &:last-child
-        right()
+      
+      &:not(:only-child)
+        &:last-child
+          right()
 
       & > nav
         column-gap var(--header-nav-column-gap) // tweak column gap to seperate by slightly more than 1 character
@@ -27,7 +28,7 @@
         &:last-child
           right()
 
-      img, svg
+      img, svg, .product-logo
         max-height var(--header-img-max-height)
 
 
@@ -35,6 +36,10 @@
 
       &:first-child
         left()
+
+      &:not(:only-child)
+        &:last-child
+          right()
 
         section
           footer
@@ -47,12 +52,6 @@
 
       &:last-child
         right()
-
-header > .app
-  --header-nav-column-gap 5ch
-
-header > .page
-  border-bottom none
 
 aside 
   --heading-min-width du(.5) //make min width smaller for aside
@@ -100,7 +99,7 @@ aside
       flex-direction var(--aside-nav-flex-direction)
 
 
-main, main > .collection > section > .main
+main, .collection > section > .main
   & > .block
 
     &.banner
@@ -108,15 +107,16 @@ main, main > .collection > section > .main
       largest()
       center()
 
+      margin var(--banner-margin)
       padding var(--banner-padding-vertical) var(--banner-padding-horizontal)
 
-    
+
     &.banner-split
       widest()
       largest()
       
       flex-direction var(--banner-split-flex-direction)
-      padding s("min(5vw, 2rem)") 1rem s("min(5vw, 2rem)") 0
+      padding var(--banner-split-padding-vertical) var(--banner-split-padding-horizontal)
       justify-content space-between
 
       & > section
@@ -132,7 +132,6 @@ main, main > .collection > section > .main
         order var(--banner-split-image-order)
         align-self center
 
-      
 
     &.article, &.section
 
@@ -140,6 +139,10 @@ main, main > .collection > section > .main
         flex-direction var(--section-flex-direction)
         flex-wrap var(--section-flex-wrap)
         gap var(--section-gap)
+
+      svg
+        color var(--icon-color)
+        font-size var(--section-icon-font-size)
 
       header
         display var(--section-header-display)
@@ -154,19 +157,17 @@ main, main > .collection > section > .main
       .main
         display var(--section-main-display)
 
-      figure
-        display var(--section-figure-display)
-        flex-direction var(--section-figure-flex-direction)
-        align-items var(--section-figure-align-items)
-        height var(--section-figure-height)
-        margin-top var(--section-figure-margin-top)
-        margin-bottom var(--section-figure-margin-bottom)
-          
-      svg.svg-inline--fa
-        color var(--icon-color)
-        font-size var(--section-icon-font-size)
-        margin-top var(--section-figure-margin-top)
-        margin-bottom var(--section-figure-margin-bottom)
+        figure
+          display var(--section-figure-display)
+          flex-direction var(--section-figure-flex-direction)
+          align-items var(--section-figure-align-items)
+          height var(--section-figure-height)
+          margin-top var(--section-figure-margin-top)
+          margin-bottom var(--section-figure-margin-bottom)
+            
+        svg
+          margin-top var(--section-figure-margin-top)
+          margin-bottom var(--section-figure-margin-bottom)
         
       footer
         smaller()
@@ -213,7 +214,7 @@ main, main > .collection > section > .main
         align-items var(--section-align-items)
 
         .main
-          & > picture:not(:last-child) > img, & > svg.svg-inline--fa:not(:last-child)
+          & > picture:not(:last-child) > img, & > svg:not(:last-child)
               float var(--section-aside-float)
               margin-top var(--section-img-margin-top)
               margin-left var(--section-aside-margin-left)
@@ -222,34 +223,8 @@ main, main > .collection > section > .main
               max-width var(--section-img-max-width)
               max-height var(--section-img-max-height)
 
-          & > picture + p, & > svg.svg-inline--fa + p
+          & > picture + p, & > svg + p
             margin-top 0
-
-
-    &.button
-      borders()
-      --copy-min-width 0
-
-      & > section
-        flex-grow var(--button-flex-grow)
-        flex-basis var(--button-flex-basis)
-        justify-content var(--button-justify-content)
-
-      a
-        text-decoration var(--button-link-text-decoration)
-        display var(--button-link-display)
-        gap var(--button-link-gap)
-        justify-content var(--button-link-justify-content)
-        align-items var(--button-link-align-items)
-        padding var(--button-link-padding)
-        &:visited, &:hover
-          color unset 
-
-      img
-        height var(--button-img-height)
-
-      svg.svg-inline--fa
-        font-size var(--button-icon-font-size)
 
 
     &.collection
@@ -303,63 +278,6 @@ main, main > .collection > section > .main
                 width var(--collection-image-figure-width)
 
 
-    &.form
-
-      form
-        flex-direction var(--form-flex-direction)
-      
-      .field
-        display flex
-        flex-direction column
-        width 20rem
-
-        & > *
-          margin 0.5rem
-
-        label
-          display flex
-          flex-direction column
-          margin -0.25rem
-          & > *
-            margin 0.25rem
-
-          span
-            font-weight bold
-            display block
-            margin-right 0.5rem
-
-          input
-            border none
-            display inline-block
-            border-radius 0.5rem
-            border-bottom 1px solid silver
-            padding 0.75rem 0.75rem 0.5rem
-            &:focus
-              outline none
-              background var(--primary-accent)
-
-          input
-            &[type="radio"]
-              opacity 0
-              & + p
-                display inline-block
-                margin-bottom 0
-                &::before
-                  margin-right 1rem
-                  content "\25CE"
-
-              &:checked + p
-                &::before
-                  content "\25C9"
-
-        .hint
-          & > p
-            &:before
-              display inline-block
-              content "Hint:"
-              font-weight bold
-              margin-right 0.5em
-            display inline-block
 
 
     &.table
@@ -368,6 +286,13 @@ main, main > .collection > section > .main
 
       section
         flex-direction column
+
+      .main
+        display flex
+        flex-direction column
+        width 100%
+        border-radius 0.5rem
+        overflow auto
 
       header
         display var(--section-header-display)
@@ -382,7 +307,6 @@ main, main > .collection > section > .main
       table
         border-collapse separate
         border-spacing 0
-        display block
         overflow scroll
 
         p, ul, blockquote, li
@@ -390,7 +314,6 @@ main, main > .collection > section > .main
             margin-bottom 0
 
         thead
-          display table-header-group
           font-weight bold
 
           th
@@ -411,21 +334,24 @@ main, main > .collection > section > .main
           &:first-child
             border-left 1px solid var(--primary-accent)
 
-        tr
-          display table-row
-
-          th, td
-            display table-cell
-
         tbody
-          display table-header-group
 
           tr:last-child
-
-            td
+            & > th, & > td
 
               &:first-child
                 border-bottom-left-radius 0.5rem
 
               &:last-child
                 border-bottom-right-radius 0.5rem
+
+        tbody:first-child
+          tr:first-child
+            & > th, & > td
+              border-top 1px solid var(--primary-accent)
+
+              &:first-child
+                border-top-left-radius 0.5rem
+
+              &:last-child
+                border-top-right-radius 0.5rem

@@ -1,20 +1,22 @@
-// default font
-html
-  --base-font \
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,\
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",\
-    "Noto Color Emoji"
+@require "mixins/dimension"
 
+// default font
+:root
   font-family var(--copy-font, var(--heading-font, var(--base-font)))
+  font-size var(--copy-font-size, 1rem)
+  line-height var(--copy-line-height, 1.5rem)
 
 h1, h2, h3, h4, h5, h6
   font-weight bold
   font-family var(--heading-font, var(--base-font))
   min-width var(--heading-min-width, s("min(90vw, %s)", du(1)))
 
+i
+  margin-right 0.25rem
+
 h1
   color var(--h1-color)
+  text-transform capitalize
 
 h2, h3, h4, h5, h6
   color var(--h2-h6-color)
@@ -29,7 +31,7 @@ h3
   font-size var(--third-level-heading-font-size)
   line-height var(--third-level-heading-line-height)
 
-p, ul, ol, blockquote, .copy, input
+p, ul, ol, blockquote, .copy
   color var(--neutral-foreground)
   font-family var(--copy-font, var(--heading-font, var(--base-font)))
   font-size var(--copy-font-size, 1rem)
@@ -40,7 +42,7 @@ p, ul, ol, blockquote, .copy, input
 h1, h2, h3, h4, h5, h6, p, li, blockquote, .copy, ul
   text-align var(--text-align, left)
   &:not(:first-child)
-    margin-top var(--copy-margin, 1rem)
+    margin-top var(--copy-margin)
 
 .main
   text-align var(--text-align, left)
