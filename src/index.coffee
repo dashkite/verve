@@ -8,6 +8,7 @@ import animations from "./animations"
 import compact from "./compact"
 import application from "./application"
 import hints from "./hints"
+import gadgets from "./gadgets"
 
 icons = "https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
 
@@ -24,4 +25,5 @@ export {
   compact
   application
   hints
+  gadgets
 }

@@ -1,0 +1,15 @@
+.flow
+  display flex
+  flex-wrap nowrap
+
+  &.horizontal
+    & > *
+      max-inline-size var(--max-inline-size)
+
+  .wrap
+    flex-wrap wrap
+    
+.grid
+  display grid
+  grid-auto-flow row
+  grid-template-columns repeat(auto-fit, minmax(var(--min-inline-size), 1fr))
