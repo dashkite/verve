@@ -1,0 +1,30 @@
+:root, :host
+  font-family var(--base-font)
+
+h1, h2, h3, h4, h5, h6, p, li, blockquote
+  line-height var(--line-height)
+  font-size unquote("calc(var(--line-height) * var(--line-height-ratio))")
+  &:not(:first-child)
+    margin-top var(--copy-margin)
+
+
+h1, h2, h3, h4, h5, h6
+  --line-height var(--lh-heading)
+  --line-height-ratio var(--lhr-heading)
+  font-family var(--heading-font)
+
+heading-sizes = "large" "default" "small" "smaller" "smallest" "smallest"
+
+for size, n in heading-sizes
+  tag = s("h%d", n + 1)
+  {tag}
+    --lh-heading s("var(--lh-heading-%s)", unquote(size))
+
+p, li, blockquote
+  --line-height var(--lh-copy)
+  --line-height-ratio var(--lhr-copy)
+  font-family var(--copy-font)
+
+header, footer
+  --lh-copy var(--lh-copy-smaller)
+  --lhr-copy var(--lhr-copy-tighter)

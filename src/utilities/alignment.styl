@@ -1,0 +1,5 @@
+alignments = "start" "center" "end" "stretch"
+
+for name in alignments
+  .align-{name}
+    align-items unquote(name)

@@ -1,29 +1,26 @@
-import reset from "./reset"
-import normalize from "./normalize"
-import typography from "./typography"
-import color from "./color"
-import forms from "./forms"
-import component from "./component"
-import animations from "./animations"
-import compact from "./compact"
-import application from "./application"
-import hints from "./hints"
-import gadgets from "./gadgets"
+import Lexicon from "./lexicon"
+import Utilities from "./utilities"
+import Semantic from "./semantic"
 
-icons = "https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+all = [
+  Semantic.reset
+  Lexicon.colors
+  Lexicon.typography
+  Semantic.navigation
+  Semantic.typography
+  Utilities.Types.layout
+  Utilities.Types.icon
+  Utilities.alignment
+  Utilities.icons
+  Utilities.justification
+  Utilities.navigation
+  Utilities.orientation
+  Utilities.proximity
+  Utilities.typography
+]
 
-# seems like there should be an easier way to do this...
-export {
-  reset
-  normalize
-  typography
-  color
-  forms
-  component
-  animations
-  icons
-  compact
-  application
-  hints
-  gadgets
+export default { 
+  all
+  Utilities
+  Semantic
 }

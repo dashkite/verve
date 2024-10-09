@@ -1,0 +1,21 @@
+types = "base" "heading" "copy"
+faces = "classic" "transitional" "slab" "system" "humanist" "geometric" "modern"
+
+for type in types
+  for face in faces
+    property = s("--%s-font", unquote(type))
+    .{type}-font-{face}
+      {property} s("var(--font-%s)", unquote(face))
+
+sizes = "smallest" "smaller" "small" "default" \
+  "large" "larger" "largest"
+
+for size in sizes
+  .{size}
+    --lh-copy s("var(--lh-copy-%s)", unquote(size))
+    --lh-heading s("var(--lh-heading-%s)", unquote(size))
+
+  .smallest
+    --lhr-copy var(--lhr-tightest)
+  .smaller
+    --lhr-copy var(--lhr-tighter)

@@ -1,76 +1,62 @@
-// Adapted from Tailwind
 :root, :host
 
-  --smallest-copy-font-size 0.675rem
-  --smallest-copy-line-height 0.75rem
+  line-heights = 0.75 1 1.25 1.5 1.75 2.25 2.75 3.5 4.5 6 8
 
-  --smaller-copy-font-size 0.75rem
-  --smaller-copy-line-height 1rem
+  for value, n in line-heights
+    --line-height-{n} s("%drem", value)
 
-  --small-copy-font-size 0.875rem
-  --small-copy-line-height 1.25rem
+  lh-names = "smallest" "smaller" "small" "default" \
+    "large" "larger" "largest"
 
-  --default-copy-font-size 1rem
-  --default-copy-line-height 1.5rem
+  for name, n in lh-names
+    --lh-copy-{name} s("var(--line-height-%d)", n)
+    --lh-heading-{name} s("var(--line-height-%d)", n + 4)
 
-  --large-copy-font-size 1.25rem
-  --large-copy-line-height 1.75rem
+  ratios = 1 .9 .8 .7 .6 .5
+  ratio-names = "tightest" "tighter" "tight" \
+    "loose" "looser" "loosest"
 
-  --larger-copy-font-size 1.75rem
-  --larger-copy-line-height 2.25rem
+  for value, n in ratios
+    name = ratio-names[n]
+    --lhr-{name} value
 
-  --largest-copy-font-size 2.25rem
-  --largest-copy-line-height 2.75rem
+  --lh-copy var(--lh-copy-default)
+  --lhr-copy var(--lhr-loose)
+  --font-size-copy unquote("calc(var(--lh-copy) * var(--lhr-copy))")
 
-  --smallest-heading-font-size var(--default-copy-font-size)
-  --smallest-heading-line-height var(--default-copy-line-height)
+  --lhr-heading var(--lhr-tighter)
+  --font-size-heading unquote("calc(var(--lh-heading) * var(--lhr-heading))")
 
-  --smaller-heading-font-size var(--default-copy-font-size)
-  --smaller-heading-line-height var(--default-copy-line-height)
+  --copy-margin 1rem
 
-  --small-heading-font-size 1.25rem
-  --small-heading-line-height 1.75rem
+  // adapted from https://modernfontstacks.com/
+  --font-stack-system-ui system-ui, sans-serif
+  --font-stack-transitional Charter, Bitstream Charter, Sitka Text, Cambria, serif
+  --font-stack-old-style Iowan Old Style, Palatino Linotype, URW Palladio L, P052, serif
+  --font-stack-humanist Seravek, Gill Sans Nova, Ubuntu, Calibri, DejaVu Sans, source-sans-pro, sans-serif
+  --font-stack-geometric-humanist Avenir, Montserrat, Corbel, URW Gothic, source-sans-pro, sans-serif
+  --font-stack-classical-humanist Optima, Candara, Noto Sans, source-sans-pro, sans-serif
+  --font-stack-neo-grotesque Inter, Roboto, Helvetica Neue, Arial Nova, Nimbus Sans, Arial, sans-serif
+  --font-stack-monospace-slab-serif Nimbus Mono PS, Courier New, monospace
+  --font-stack-monospace-code Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono,Monaco, Droid Sans Mono, Source Code Pro, Cascadia Code,Menlo, Consolas, DejaVu Sans Mono, monospace
+  --font-stack-industrial Bahnschrift, DIN Alternate, Franklin Gothic Medium, Nimbus Sans Narrow, sans-serif-condensed, sans-serif
+  --font-stack-rounded-sans ui-rounded, Hiragino Maru Gothic ProN, Quicksand, Comfortaa, Manjari, Arial Rounded MT, Arial Rounded MT Bold, Calibri, source-sans-pro, sans-serif
+  --font-stack-slab-serif Rockwell, Rockwell Nova, Roboto Slab, DejaVu Serif, Sitka Small, serif
+  --font-stack-antique Superclarendon, Bookman Old Style, URW Bookman, URW Bookman L, Georgia Pro, Georgia, serif
+  --font-stack-didone Didot, Bodoni MT, Noto Serif Display, URW Palladio L, P052, Sylfaen, serif
+  --font-stack-handwritten Segoe Print, Bradley Hand, Chilanka, TSCu_Comic, casual, cursive
 
-  --default-heading-font-size 1.5rem
-  --default-heading-line-height 2rem
+  // simplified aliases that can be remapped
+  --font-classic var(--font-stack-antique)
+  --font-transitional var(--font-stack-transitional)
+  --font-slab var(--font-stack-slab-serif)
+  --font-system var(--font-stack-system-ui)
+  --font-humanist var(--font-stack-classical-humanist)
+  --font-geometric var(--font-stack-geometric-humanist)
+  --font-modern var(--font-stack-neo-grotesque)
 
-  --large-heading-font-size 1.875rem
-  --large-heading-line-height 2.25rem
+  // defaults
+  --base-font var(--font-system)
+  --copy-font var(--base-font)
+  --heading-font var(--base-font)
 
-  --larger-heading-font-size 2.25rem
-  --larger-heading-line-height 2.5rem
-
-  --largest-heading-font-size s("min(16vw, 3rem)")
-  --largest-heading-line-height 1
-
-  --default-banner-font-size s("min(16vw, 3.75rem)")
-  --default-banner-line-height 1
-
-  --large-banner-font-size s("min(16vw, 4.5rem)")
-  --large-banner-line-height 1
-
-  --larger-banner-font-size s("min(16vw, 6rem)")
-  --larger-banner-line-height 1
-
-  --largest-banner-font-size s("min(16vw, 8rem)")
-  --largest-banner-line-height 1
-
-  --copy-font-size var(--default-copy-font-size)
-  --copy-line-height var(--default-copy-line-height)
-  --caption-font-size var(--small-copy-font-size)
-  --caption-line-height var(--small-copy-line-height)
-  --first-level-heading-font-size var(--larger-heading-font-size)
-  --first-level-heading-line-height var(--larger-heading-line-height)
-  --second-level-heading-font-size var(--large-heading-font-size)
-  --second-level-heading-line-height var(--large-heading-line-height)
-  --third-level-heading-font-size var(--default-heading-font-size)
-  --third-level-heading-line-height var(--default-heading-line-height)
-  --copy-max-width 72ch
-  --copy-min-width min(12rem, 100vw)
-  --default-copy-margin 1rem
-  --copy-margin var(--default-copy-margin)
-
-  --base-font system-ui, sans-serif
-  
-  --monospace-font ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo,\
-    Consolas, 'DejaVu Sans Mono', monospace

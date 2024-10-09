@@ -1,0 +1,8 @@
+names = "start" "center" "end" "between" "around" "evenly"
+
+values = "start" "center" "end" "space-between" "space-around" "space-evenly"
+
+for name, i in names
+  value = values[i]
+  .justify-{name}
+    justify-content unquote(value)

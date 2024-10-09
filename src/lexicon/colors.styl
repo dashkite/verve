@@ -1,0 +1,21 @@
+lightness = "lightest" "lighter" "light" "auto" "dark" "darker" "darkest"
+
+chroma = "lowest" "lower" "low" "auto" "high" "higher" "highest"
+
+hue = "red" "red-orange" "orange" "orange-gold" "gold" "gold-green" \
+  "green" "green-blue" "blue" "blue-violet" "violet-blue" "violet"
+
+for name, n in lightness
+  .{name}
+    --lightness .85 - ( n * .10 )
+
+for name, n in chroma
+  .chroma-{name}
+    --chroma .15 + ( n * .10 )
+
+for name, n in hue
+  .hue-{name}
+    --hue 0 + ( n * 30 )
+
+.body
+  --highlight oklch(var(--lightness) var(--chroma) var(--hue))
