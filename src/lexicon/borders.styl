@@ -1,0 +1,16 @@
+// for some reason stylus wouldn't parse these within the selector
+border-names = "thinnest" "thinner" "thin" "thick" "thicker" "thickest"
+border-sizes = 1px 2px 3px 0.25rem 0.5rem 1rem
+radii-names = "smallest" "smaller" "small" "round" "rounded" "roundest"
+radii-sizes = 2px 4px 0.5rem 1rem 2rem 50%
+
+:root, :host
+
+  for name, i in border-names
+    --border-{name} border-sizes[i]
+
+  for name, i in radii-names
+    --radius-{name} radii-sizes[i]
+
+  --radius-pill var(--radius-rounded)
+

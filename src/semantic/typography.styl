@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6
 
 heading-sizes = "large" "default" "small" "smaller" "smallest" "smallest"
 
+// TODO this prevents utilities from resizing the headings
 for size, n in heading-sizes
   tag = s("h%d", n + 1)
   {tag}

@@ -4,6 +4,7 @@ import Semantic from "./semantic"
 
 all = [
   Semantic.reset
+  Lexicon.borders
   Lexicon.colors
   Lexicon.typography
   Semantic.navigation
