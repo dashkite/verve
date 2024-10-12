@@ -1,9 +1,11 @@
-import colors from "./colors"
-import typography from "./typography"
 import borders from "./borders"
+import colors from "./colors"
+import proximity from "./proximity"
+import typography from "./typography"
 
 export default {
-  colors
-  typography
   borders
+  colors
+  proximity
+  typography
 }

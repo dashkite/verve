@@ -6,6 +6,7 @@ all = [
   Semantic.reset
   Lexicon.borders
   Lexicon.colors
+  Lexicon.proximity
   Lexicon.typography
   Semantic.navigation
   Semantic.typography
