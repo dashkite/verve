@@ -17,5 +17,10 @@ for name, n in hue
   .hue-{name}
     --hue 0 + ( n * 30 )
 
+:root, :host
+  --lightness 100
+  --chroma 0
+  --hue 0
+
 .body
   --highlight oklch(var(--lightness) var(--chroma) var(--hue))
