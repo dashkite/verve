@@ -29,5 +29,6 @@
 *
   // --highlight oklch(var(--lightness) var(--chroma) var(--hue))
   --highlight var(--input-color)
-  // TODO add shades based on oklch
-  //      ex: accent
+  // TODO is + .5 reliable? probably need colorist
+  --accent oklch(from var(--highlight) var(l + .5) c h )
+  // TODO add more shades

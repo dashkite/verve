@@ -13,6 +13,7 @@ all = [
   Utilities.Types.layout
   Utilities.Types.icon
   Utilities.alignment
+  Utilities.borders
   Utilities.icons
   Utilities.justification
   Utilities.navigation

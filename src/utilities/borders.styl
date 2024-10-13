@@ -1,0 +1,21 @@
+border-names = "right" "bottom" "left" "top"
+
+for i in (1..14)
+  result = ()
+  for name, j in border-names
+    if floor(i /( 2 ** j )) % 2 == 1
+      unshift result, name
+  class = join("-", result)
+  .border-{ class }
+    for name in result
+      border-{name} 1px solid var(--accent)
+      // TODO replace with custom property
+      border-radius 0.5rem
+
+.border-all
+  border 1px solid var(--accent)
+  border-radius 0.5rem
+
+.border-none
+  border none
+
