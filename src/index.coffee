@@ -8,7 +8,6 @@ all = [
   Lexicon.colors
   Lexicon.proximity
   Lexicon.typography
-  Semantic.layout
   Semantic.navigation
   Semantic.typography
   Utilities.Types.layout

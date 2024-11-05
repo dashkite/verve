@@ -10,3 +10,35 @@
   grid-auto-flow row
   // TODO possibly replace 8rem here with custom property
   grid-template-columns repeat(auto-fit, minmax(8rem, 1fr))
+
+.layout
+  height 100%
+  display grid
+  grid-template-columns 1fr
+
+  > *
+    width 100%
+
+  &.header
+    & > main
+      grid-row 2
+
+  &.header
+    grid-template-rows auto 1fr
+    justify-content center
+    justify-items center
+
+  &.footer
+    grid-template-rows 1fr auto
+    justify-content center
+    justify-items center
+
+  &.header.footer
+    grid-template-rows auto 1fr auto
+    justify-content center
+    justify-items center
+
+  &.aside
+    grid-template-columns 1fr auto
+    & > aside
+      grid-row 1 / -1
