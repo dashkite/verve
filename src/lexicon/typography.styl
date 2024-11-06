@@ -2,11 +2,11 @@
 
   line-heights = 0.75 1 1.25 1.5 1.75 2.25 2.75 3.5 4.5 6 8
 
-  for value, n in line-heights
-    --line-height-{n} s("%drem", value)
-
   lh-names = "smallest" "smaller" "small" "default" \
     "large" "larger" "largest"
+
+  for value, n in line-heights
+    --line-height-{n} s("%drem", value)
 
   for name, n in lh-names
     --lh-copy-{name} s("var(--line-height-%d)", n)
@@ -59,4 +59,20 @@
   --base-font var(--font-system)
   --copy-font var(--base-font)
   --heading-font var(--base-font)
+
+@container (max-inline-size: 20rem)
+  *
+    line-heights = 0.5 0.75 1 1.25 1.5 1.75 2.25 2.75 3.5 4.5 6
+    lh-names = "smallest" "smaller" "small" "default" \
+      "large" "larger" "largest"
+
+    // we have to reset these or they will still use
+    // their original values -- the values cascade
+    // but are NOT reactive
+    for value, n in line-heights
+      --line-height-{n} s("%drem", value)
+
+    for name, n in lh-names
+      --lh-copy-{name} s("var(--line-height-%d)", n)
+      --lh-heading-{name} s("var(--line-height-%d)", n + 4)
 
