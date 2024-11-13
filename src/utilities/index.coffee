@@ -4,6 +4,7 @@ import justification from "./justification"
 import navigation from "./navigation"
 import orientation from "./orientation"
 import proximity from "./proximity"
+import size from "./size"
 import Types from "./types"
 import typography from "./typography"
 
@@ -18,5 +19,6 @@ export default {
   orientation
   proximity
   Types
+  size
   typography
 }

@@ -1,0 +1,47 @@
+typography( specifier )
+  if specifier.selectors
+    selectors = join(", ", specifier.selectors)
+    { selectors }
+      --spacing specifier.spacing
+      --responsiveness specifier.responsiveness
+      --scale s("%srem", specifier.scale )
+      --line-height s("round(
+        nearest,
+        calc(
+          var(--lower) +
+          (var(--responsiveness) *
+            (1cqi - var(--container-min))/var(--container-range) *
+            (var(--relative-upper) - var(--relative-lower)))),
+        var(--scale))")
+      line-height var(--line-height)
+      font-size calc(var(--line-height) * var(--spacing))
+
+    for selector, i in specifier.selectors
+      lower = specifier.start * (( 1 + 1/specifier.harmonic ) ** i )
+      upper = specifier.start * (( 1 + 1/specifier.harmonic ) ** ( i + 1 ))
+      { selector }
+        --relative-lower lower * specifier.scale
+        --relative-upper upper * specifier.scale
+        --lower s("calc(var(--scale) * %s)", lower )
+        --upper s("calc(var(--scale) * %s)", upper )
+  else
+    lower = specifier.start
+    upper = specifier.start * ( 1 + 1/specifier.harmonic )
+    --spacing specifier.spacing
+    --responsiveness specifier.responsiveness
+    --scale s("%srem", specifier.scale )
+    --relative-lower lower * specifier.scale
+    --relative-upper upper * specifier.scale
+    --lower s("calc(var(--scale) * %s)", lower )
+    --upper s("calc(var(--scale) * %s)", upper )
+    --line-height s("round(
+      nearest,
+      calc(
+        var(--lower) +
+        (var(--responsiveness) *
+          (1cqi - var(--container-min))/var(--container-range) *
+          (var(--relative-upper) - var(--relative-lower)))),
+      var(--scale))")
+    line-height var(--line-height)
+    font-size calc(var(--line-height) * var(--spacing))
+

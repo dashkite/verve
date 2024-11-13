@@ -19,6 +19,7 @@ all = [
   Utilities.navigation
   Utilities.orientation
   Utilities.proximity
+  Utilities.size
   Utilities.typography
 ]
 

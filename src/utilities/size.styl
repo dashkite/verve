@@ -1,0 +1,35 @@
+@require "../mixins/typography"
+
+sizes = smallest smaller small auto large larger largest
+
+for size, i in sizes
+  if size != auto
+    .{ size }
+      typography({
+        selectors: h6 h5 h4 h3 h2 h1
+        harmonic: 4
+        spacing: 0.9
+        start: 1 + i
+        scale: 0.25
+        responsiveness: 1
+      })
+      font-family var(--copy-font)
+      typography({
+        harmonic: 3
+        spacing: 0.5
+        start: 3 + i
+        scale: 0.25
+        responsiveness: 1
+      })
+
+header, footer
+  for size, i in sizes
+    if size != auto
+      &.{ size }, { size }
+        typography({
+          harmonic: 4
+          spacing: 0.8
+          start: 2 + i
+          scale: 0.25
+          responsiveness: 1
+        })
