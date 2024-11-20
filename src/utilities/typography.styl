@@ -1,9 +1,1 @@
-types = "base" "heading" "copy"
-faces = "classic" "transitional" "slab" "system" "humanist" "geometric" "modern"
-
-for type in types
-  for face in faces
-    property = s("--%s-font", unquote(type))
-    .{type}-font-{face}
-      {property} s("var(--font-%s)", unquote(face))
-
+// todo

@@ -1,3 +1,5 @@
+@require "../mixins/typography"
+
 .button
   display flex
   justify-content center
@@ -15,3 +17,10 @@
   &:focus-visible
     outline 1px solid var(--accent)
     outline-offset 1px  
+
+  // TODO resolve composition of utilities w/o !important
+  --spacing 0.8 !important
+  
+  p, li, blockquote
+    font-family var(--base-font)
+    text-align center
