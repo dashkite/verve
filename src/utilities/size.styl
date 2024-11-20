@@ -1,5 +1,9 @@
 @require "../mixins/typography"
 
+// todo relate spacing to start value
+// otherwise increases in spacing and start value
+// result in disproportionate jumps in font size
+
 sizes = smallest smaller small auto large larger largest
 
 for size, i in sizes
@@ -13,7 +17,10 @@ for size, i in sizes
         scale: 0.25
         responsiveness: 1
       })
-      font-family var(--copy-font)
+
+      p, li, blockquote
+        font-family var(--copy-font)
+
       typography({
         harmonic: 3
         spacing: 0.5
