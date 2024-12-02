@@ -22,13 +22,18 @@
 //   --chroma 0
 //   --hue 0
 
-:root, :host
-  --input-color white
+// :root, :host
+//   --input-color white
 
-// TODO is there a better way to set this?
-*
-  // --highlight oklch(var(--lightness) var(--chroma) var(--hue))
-  --highlight var(--input-color)
-  // TODO is + .5 reliable? probably need colorist
-  --accent oklch(from var(--highlight) var(l + .5) c h )
-  // TODO add more shades
+// // TODO is there a better way to set this?
+// *
+//   // --highlight oklch(var(--lightness) var(--chroma) var(--hue))
+//   --highlight var(--input-color)
+//   // TODO is + .5 reliable? probably need colorist
+//   --accent oklch(from var(--highlight) var(l + .5) c h )
+//   // TODO add more shades
+
+
+// @property --background
+//   syntax "<color>"
+//   inherits: true
