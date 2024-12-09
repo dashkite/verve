@@ -8,12 +8,14 @@ all = [
   Lexicon.colors
   Lexicon.proximity
   Lexicon.typography
+  Semantic.colors
   Semantic.navigation
   Semantic.typography
   Utilities.Types.layout
   Utilities.Types.icon
   Utilities.alignment
   Utilities.borders
+  Utilities.colors
   Utilities.icons
   Utilities.justification
   Utilities.navigation

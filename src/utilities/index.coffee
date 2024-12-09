@@ -1,5 +1,6 @@
 import alignment from "./alignment"
 import borders from "./borders"
+import colors from "./colors"
 import justification from "./justification"
 import navigation from "./navigation"
 import orientation from "./orientation"
@@ -13,6 +14,7 @@ icons = "https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
 export default {
   alignment
   borders
+  colors
   icons
   justification
   navigation
